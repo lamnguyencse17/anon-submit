@@ -1,0 +1,53 @@
+import type { ColumnType } from "kysely";
+
+export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
+  ? ColumnType<S, I | undefined, U>
+  : ColumnType<T, T | undefined, T>;
+
+export type Timestamp = ColumnType<Date, Date | string, Date | string>;
+
+export type UserType = "ADMIN" | "USER";
+
+export interface Organizations {
+  id: Generated<number>;
+  name: string;
+  created_at: Generated<Timestamp>;
+  updated_at: Generated<Timestamp>;
+  deleted_at: Timestamp | null;
+  owned_by: number | null;
+}
+
+export interface Submissions {
+  id: string;
+  content: string;
+  organization_id: number;
+  approved_by: number | null;
+  created_at: Generated<Timestamp>;
+  updated_at: Generated<Timestamp>;
+  approved_at: Timestamp | null;
+  deleted_at: Timestamp | null;
+}
+
+export interface UserOrganization {
+  id: Generated<number>;
+  user_id: number;
+  organization_id: number;
+  created_at: Generated<Timestamp>;
+  updated_at: Generated<Timestamp>;
+}
+
+export interface Users {
+  id: Generated<number>;
+  name: string;
+  created_at: Generated<Timestamp>;
+  updated_at: Generated<Timestamp>;
+  deleted_at: Timestamp | null;
+  type: Generated<UserType>;
+}
+
+export interface DB {
+  organizations: Organizations;
+  submissions: Submissions;
+  user_organization: UserOrganization;
+  users: Users;
+}
