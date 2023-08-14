@@ -4,4 +4,5 @@
 pnpm lint
 pnpm migrate
 pnpm gen-kysely
+pnpm format
 git add -A .
