@@ -8,6 +8,15 @@ export type Timestamp = ColumnType<Date, Date | string, Date | string>;
 
 export type UserType = "ADMIN" | "USER";
 
+export interface Attachments {
+  id: Generated<number>;
+  url: string;
+  submission_id: string;
+  created_at: Generated<Timestamp>;
+  updated_at: Generated<Timestamp>;
+  deleted_at: Timestamp | null;
+}
+
 export interface Organizations {
   id: Generated<number>;
   name: string;
@@ -21,7 +30,8 @@ export interface Submissions {
   id: string;
   content: string;
   organization_id: number;
-  approved_by: number | null;
+  is_approved: Generated<boolean | null>;
+  actioned_by: number | null;
   created_at: Generated<Timestamp>;
   updated_at: Generated<Timestamp>;
   approved_at: Timestamp | null;
@@ -46,6 +56,7 @@ export interface Users {
 }
 
 export interface DB {
+  attachments: Attachments;
   organizations: Organizations;
   submissions: Submissions;
   user_organization: UserOrganization;
