@@ -49,6 +49,8 @@ export interface UserOrganization {
 export interface Users {
   id: Generated<number>;
   name: string;
+  email: string;
+  hashed_password: string;
   created_at: Generated<Timestamp>;
   updated_at: Generated<Timestamp>;
   deleted_at: Timestamp | null;
