@@ -22,17 +22,17 @@ export const metadata: Metadata = {
 const handleAuth = async () => {
   const token = cookies().get("Authorization")?.value;
   if (!token) {
-    return undefined;
+    return {};
   }
-  const decodedUser = await decodeToken(token);
-  if (!decodedUser) {
-    return undefined;
+  const tokenData = await decodeToken(token);
+  if (!tokenData) {
+    return {};
   }
-  const user = await getUserById(decodedUser.id);
+  const user = await getUserById(tokenData.user.id);
   if (!user) {
-    return undefined;
+    return {};
   }
-  return camelcaseKeys(user);
+  return { user: camelcaseKeys(user), tokenPayload: tokenData, token };
 };
 
 export default async function RootLayout({
@@ -40,7 +40,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await handleAuth();
+  const { user, token, tokenPayload } = await handleAuth();
+
   return (
     <html
       lang="en"
@@ -49,7 +50,7 @@ export default async function RootLayout({
       <body
         className={`${inter.className} flex h-full w-full flex-col items-center`}
       >
-        <RootHook user={user} />
+        <RootHook user={user} tokenData={{ ...tokenPayload, token }} />
         <Header />
         <div className="container flex flex-1 flex-col px-8">{children}</div>
       </body>

@@ -32,6 +32,7 @@ export const comparePassword = async (password: string, hash: string) => {
 };
 
 type TokenPayload = Pick<FullUserRecord, "id" | "name" | "email">;
+export type TokenData = jose.JWTPayload & { user: TokenPayload };
 
 const getSecret = () => {
   const jwtSecret = env("JWT_SECRET");
@@ -73,8 +74,7 @@ export const decodeToken = async (token: string) => {
       issuer,
       audience,
     });
-    const { user } = payload as jose.JWTPayload & { user: TokenPayload };
-    return user;
+    return payload as TokenData;
   } catch (err) {
     console.log(err);
     return undefined;

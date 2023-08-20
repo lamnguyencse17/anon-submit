@@ -3,7 +3,7 @@ import useUserStore from "@/stores/user";
 
 const UnauthenticatedNav = () => {
   const shouldShowUnauthNav = useUserStore((state) => state.data == null);
-
+  console.log(useUserStore((state) => state.data));
   if (shouldShowUnauthNav)
     return (
       <div className="flex flex-1 flex-row justify-end space-x-4">
