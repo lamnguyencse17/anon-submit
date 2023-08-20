@@ -21,6 +21,16 @@ export const hashPassword = async (password: string) => {
   }
 };
 
+export const comparePassword = async (password: string, hash: string) => {
+  try {
+    const isMatch = await bcrypt.compare(password, hash);
+    return isMatch;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
 type TokenPayload = Pick<FullUserRecord, "id" | "name" | "email">;
 
 const getSecret = () => {

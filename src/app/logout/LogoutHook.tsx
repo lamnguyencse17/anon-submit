@@ -2,7 +2,7 @@
 
 import { SUCCESSFUL_STATUS } from "@/constants/status";
 import useUserStore from "@/stores/user";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { FunctionComponent, useCallback, useEffect } from "react";
 
 type LogoutHookProps = {

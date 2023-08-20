@@ -1,16 +1,23 @@
 "use server";
 
-import { SentRegisterFormData } from "./form";
 import camelcaseKeys from "camelcase-keys";
 import { dbCreateUser } from "@/database/queries/users";
 import { generateToken, hashPassword } from "@/utils/auth";
 import { cookies } from "next/headers";
 import env from "@/utils/env";
 import dayjs from "dayjs";
+import { SentRegisterFormData, sentRegisterFormSchema } from "./schema";
 
 export const handleRegisterFormAction = async (
   registerFormData: SentRegisterFormData,
 ) => {
+  const validateResult = sentRegisterFormSchema.safeParse(registerFormData);
+  if (!validateResult.success) {
+    return {
+      status: 400,
+      message: validateResult.error,
+    };
+  }
   const securedPassword = await hashPassword(registerFormData.password);
   if (!securedPassword) {
     return {

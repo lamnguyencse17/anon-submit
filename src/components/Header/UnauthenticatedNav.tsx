@@ -8,7 +8,7 @@ const UnauthenticatedNav = () => {
     return (
       <div className="flex flex-1 flex-row justify-end space-x-4">
         <a href="/register">Register</a>
-        <a href="#">Login</a>
+        <a href="/login">Login</a>
       </div>
     );
   return null;
