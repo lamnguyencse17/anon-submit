@@ -36,24 +36,21 @@ export const RegisterForm = () => {
     resolver: zodResolver(registerFormSchema as any),
   });
 
-  const [isPending, startTransition] = useTransition();
   const setUser = useUserStore((state) => state.setUser);
   return (
     <form
-      action={() =>
-        startTransition(async () => {
-          const isValid = await trigger();
-          if (!isValid) return;
-          const sentRegisterFormData = getValues();
-          const response = await handleRegisterFormAction(sentRegisterFormData);
-          if (response.status === SUCCESSFUL_STATUS) {
-            const userData = response.data;
-            if (userData) {
-              setUser(userData);
-            }
+      action={async () => {
+        const isValid = await trigger();
+        if (!isValid) return;
+        const sentRegisterFormData = getValues();
+        const response = await handleRegisterFormAction(sentRegisterFormData);
+        if (response.status === SUCCESSFUL_STATUS) {
+          const userData = response.data;
+          if (userData) {
+            setUser(userData);
           }
-        })
-      }
+        }
+      }}
       className="flex w-2/3 flex-col"
     >
       <input
@@ -114,7 +111,6 @@ export const RegisterForm = () => {
       <button
         type="submit"
         className="border-1 mx-auto mt-4 w-1/4 rounded border border-dark bg-secondary p-2 hover:border hover:border-dark hover:bg-primary hover:text-dark"
-        disabled={isPending}
       >
         Submit
       </button>

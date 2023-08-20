@@ -3,6 +3,8 @@ import { devtools } from "zustand/middleware";
 import type { CamelCasedPropertiesDeep, Except } from "type-fest";
 import { immer } from "zustand/middleware/immer";
 import { FullUserRecord } from "@/database/queries/users";
+import { createWithEqualityFn } from "zustand/traditional";
+import { shallow } from "zustand/shallow";
 
 type StoredUserData = Except<
   CamelCasedPropertiesDeep<FullUserRecord>,
@@ -15,7 +17,7 @@ type UserState = {
   resetUser: () => void;
 };
 
-const useUserStore = create<UserState>()(
+const useUserStore = createWithEqualityFn<UserState>()(
   devtools(
     immer((set) => ({
       data: undefined,
@@ -37,6 +39,7 @@ const useUserStore = create<UserState>()(
         ),
     })),
   ),
+  shallow,
 );
 
 export default useUserStore;

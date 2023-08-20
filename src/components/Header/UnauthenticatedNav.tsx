@@ -2,9 +2,9 @@
 import useUserStore from "@/stores/user";
 
 const UnauthenticatedNav = () => {
-  const shouldShowAuthNav = useUserStore((state) => state.data == null);
+  const shouldShowUnauthNav = useUserStore((state) => state.data == null);
 
-  if (shouldShowAuthNav)
+  if (shouldShowUnauthNav)
     return (
       <div className="flex flex-1 flex-row justify-end space-x-4">
         <a href="/register">Register</a>

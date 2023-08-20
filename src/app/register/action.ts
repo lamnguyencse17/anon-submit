@@ -3,7 +3,10 @@
 import { SentRegisterFormData } from "./form";
 import camelcaseKeys from "camelcase-keys";
 import { dbCreateUser } from "@/database/queries/users";
-import { hashPassword } from "@/utils/auth";
+import { generateToken, hashPassword } from "@/utils/auth";
+import { cookies } from "next/headers";
+import env from "@/utils/env";
+import dayjs from "dayjs";
 
 export const handleRegisterFormAction = async (
   registerFormData: SentRegisterFormData,
@@ -29,6 +32,21 @@ export const handleRegisterFormAction = async (
   }
 
   const { hashedPassword, ...returnedUser } = camelcaseKeys(user);
+  const token = await generateToken(returnedUser);
+  if (!token) {
+    return {
+      status: 500,
+      message: "Something went wrong",
+    };
+  }
+  cookies().set({
+    name: "Authorization",
+    value: token,
+    httpOnly: true,
+    secure: env("NODE_ENV") === "production",
+    expires: dayjs().add(1, "day").toDate(),
+  });
+
   return {
     status: 200,
     data: returnedUser,

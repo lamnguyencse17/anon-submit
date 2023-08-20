@@ -31,9 +31,8 @@ export const getUserById = async (id: number) => {
       .selectFrom("users")
       .select(["id", "name", "email", "type", "created_at", "updated_at"])
       .where("id", "=", id)
-      .where("deleted_at", "!=", null)
-      .execute();
-
+      .where("deleted_at", "is", null)
+      .executeTakeFirst();
     if (!user) {
       return undefined;
     }
