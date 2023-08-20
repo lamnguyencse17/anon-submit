@@ -1,0 +1,35 @@
+{
+  "header": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "organizations": "Organizations"
+  },
+  "landing": {
+    "title": "A simple and anonymous feedback solution",
+    "property_simple": "Simple",
+    "property_simple_description": "Our service is easy to use and both desktop and mobile friendly. Best of all, it's free!",
+    "property_anonymous": "Truly anonymous",
+    "property_anonymous_description": "As a submitter, you're fully anonymous. No IP logging, \"logins\", \"verifications\", or other identity-revealing gimmicks.",
+    "property_powerful": "Powerful",
+    "property_powerful_description": "Collect, publish, edit, and delete submissions with one click, and customize your page's submission portal with our many options."
+  },
+  "login": {
+    "title": "Let's get started!",
+    "placeholder": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "cta": "Login"
+  },
+  "register": {
+    "title": "Let's get started!",
+    "placeholder": {
+      "email": "Email",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "name": "Name"
+    },
+    "cta": "Register"
+  }
+}

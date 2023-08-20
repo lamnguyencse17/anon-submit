@@ -1,0 +1,35 @@
+{
+  "header": {
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "logout": "Đăng xuất",
+    "organizations": "Tổ chức"
+  },
+  "landing": {
+    "title": "Một giải pháp phản hồi đơn giản và ẩn danh",
+    "property_simple": "Đơn giản",
+    "property_simple_description": "Dịch vụ của chúng tôi dễ sử dụng và thân thiện với cả máy tính và điện thoại di động. Quan trọng nhất, nó hoàn toàn miễn phí!",
+    "property_anonymous": "Thực sự ẩn danh",
+    "property_anonymous_description": "Dưới tư cách là người gửi, bạn hoàn toàn ẩn danh. Không có ghi chú IP, \"đăng nhập\", \"xác minh\", hoặc những chiêu trò tiết lộ danh tính khác.",
+    "property_powerful": "Mạnh mẽ",
+    "property_powerful_description": "Thu thập, công khai, chỉnh sửa và xóa các bài gửi chỉ với một lần nhấp chuột, và tùy chỉnh cổng gửi bài của trang của bạn với nhiều tùy chọn của chúng tôi."
+  },
+  "login": {
+    "title": "Hãy bắt đầu!",
+    "placeholder": {
+      "email": "Email",
+      "password": "Mật khẩu"
+    },
+    "cta": "Đăng nhập"
+  },
+  "register": {
+    "title": "Hãy bắt đầu!",
+    "placeholder": {
+      "email": "Email",
+      "password": "Mật khẩu",
+      "password_confirm": "Xác nhận mật khẩu",
+      "name": "Tên"
+    },
+    "cta": "Đăng ký"
+  }
+}

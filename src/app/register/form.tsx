@@ -7,8 +7,10 @@ import { SUCCESSFUL_STATUS } from "@/constants/status";
 import useUserStore from "@/stores/user";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { RegisterFormSchemaType, registerFormSchema } from "./schema";
+import useClientTranslation from "@/hooks/useClientTranslation";
 
 export const RegisterForm = () => {
+  const { t } = useClientTranslation();
   const {
     register,
     trigger,
@@ -38,7 +40,7 @@ export const RegisterForm = () => {
     >
       <input
         {...register("name")}
-        placeholder="Name"
+        placeholder={t("register.placeholder.name")}
         type="text"
         className="w-full rounded border border-secondary p-2 focus:outline-dark"
       />
@@ -51,7 +53,7 @@ export const RegisterForm = () => {
       </p>
       <input
         {...register("email")}
-        placeholder="Email"
+        placeholder={t("register.placeholder.email")}
         type="email"
         className="mt-4 w-full rounded border border-secondary p-2 focus:outline-dark"
       />
@@ -65,7 +67,7 @@ export const RegisterForm = () => {
 
       <input
         {...register("password")}
-        placeholder="Password"
+        placeholder={t("register.placeholder.password")}
         type="password"
         className="mt-4 w-full rounded border border-secondary p-2 focus:outline-dark"
       />
@@ -79,7 +81,7 @@ export const RegisterForm = () => {
 
       <input
         {...register("confirmPassword")}
-        placeholder="Confirm Password"
+        placeholder={t("register.placeholder.password_confirm")}
         type="password"
         className="mt-4 w-full rounded border border-secondary p-2 focus:outline-dark"
       />
@@ -96,7 +98,7 @@ export const RegisterForm = () => {
         className="border-1 mx-auto mt-4 w-1/4 rounded border border-dark bg-secondary p-2 hover:border hover:border-dark hover:bg-primary hover:text-dark"
         disabled={pending}
       >
-        Submit
+        {t("register.cta")}
       </button>
     </form>
   );
