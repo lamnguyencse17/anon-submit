@@ -6,9 +6,13 @@ const UnauthenticatedNav = () => {
   console.log(useUserStore((state) => state.data));
   if (shouldShowUnauthNav)
     return (
-      <div className="flex flex-1 flex-row justify-end space-x-4">
-        <a href="/register">Register</a>
-        <a href="/login">Login</a>
+      <div className="flex flex-1 flex-row justify-end space-x-4 ">
+        <a href="/register" className="hover:text-primary">
+          Register
+        </a>
+        <a href="/login" className="hover:text-primary">
+          Login
+        </a>
       </div>
     );
   return null;
