@@ -9,7 +9,7 @@ const AuthenticatedNav = () => {
     return (
       <div className="flex w-full flex-1 flex-row space-x-4 pl-12">
         <div className="flex-1">
-          <a href="/logout" className="hover:text-primary">
+          <a href="/organizations" className="hover:text-primary">
             {t("header.organizations")}
           </a>
         </div>

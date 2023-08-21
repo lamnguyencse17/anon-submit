@@ -33,7 +33,8 @@ export const getUserById = async (id: number) => {
     if (!user) {
       return undefined;
     }
-    return user;
+    const { hashed_password, ...omittedUser } = user;
+    return omittedUser;
   } catch (err) {
     console.log(err);
     return undefined;

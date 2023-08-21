@@ -2,37 +2,16 @@ import Header from "@/components/Header";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
-import { cookies, headers } from "next/headers";
 import RootHook from "@/components/RootHook";
-import { decodeToken } from "@/utils/auth";
-import { getUserById } from "@/database/queries/users";
-import camelcaseKeys from "camelcase-keys";
-import { fallbackLng } from "../i18n/settings";
 import { dir } from "i18next";
-import languageParser from "accept-language-parser";
-import serverDetectLanguage from "@/utils/serverDetectLanguage";
+import serverDetectLanguage from "@/utils/serverHook/serverDetectLanguage";
+import serverHandleAuthentication from "@/utils/serverHook/serverHandleAuthentication";
 
 const inter = Be_Vietnam_Pro({
   variable: "--be-vietnam-pro",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["vietnamese"],
 });
-
-const handleAuth = async () => {
-  const token = cookies().get("Authorization")?.value;
-  if (!token) {
-    return {};
-  }
-  const tokenData = await decodeToken(token);
-  if (!tokenData) {
-    return {};
-  }
-  const user = await getUserById(tokenData.user.id);
-  if (!user) {
-    return {};
-  }
-  return { user: camelcaseKeys(user), tokenPayload: tokenData, token };
-};
 
 export const metadata: Metadata = {
   title: "Anon Submit",
@@ -44,7 +23,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { user, token, tokenPayload } = await handleAuth();
+  const authData = await serverHandleAuthentication();
+  const user = authData.user;
+  const token = authData.token;
+  const tokenPayload = authData.tokenData;
   const language = serverDetectLanguage();
 
   return (

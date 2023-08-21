@@ -1,7 +1,7 @@
 import { GetUserRecord } from "@/database/queries/users";
 import useTokenStore, { StoredTokenData } from "@/stores/token";
 import useUserStore from "@/stores/user";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { CamelCasedPropertiesDeep } from "type-fest";
 
 const useAuth = (
@@ -18,7 +18,7 @@ const useHandleUser = (user?: CamelCasedPropertiesDeep<GetUserRecord>) => {
 
   const hasUser = !!user;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (hasUser) {
       setUser({ ...user, deletedAt: null });
       return;
@@ -35,7 +35,7 @@ const useHandleToken = (tokenData?: StoredTokenData) => {
   const hasTokenData = !!tokenData;
   const { token } = tokenData || {};
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (hasTokenData) {
       setToken(tokenData);
       return;
