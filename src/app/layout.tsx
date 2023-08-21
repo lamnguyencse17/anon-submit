@@ -7,7 +7,7 @@ import RootHook from "@/components/RootHook";
 import { decodeToken } from "@/utils/auth";
 import { getUserById } from "@/database/queries/users";
 import camelcaseKeys from "camelcase-keys";
-import { fallbackLng } from "./i18n/settings";
+import { fallbackLng } from "../i18n/settings";
 import { dir } from "i18next";
 import languageParser from "accept-language-parser";
 import serverDetectLanguage from "@/utils/serverDetectLanguage";

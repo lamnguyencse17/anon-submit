@@ -1,4 +1,4 @@
-import { getInnerServerTranslation } from "@/app/i18n";
+import { getInnerServerTranslation } from "@/i18n";
 import { languageNamespace } from "@/constants/settings";
 import serverDetectLanguage from "@/utils/serverDetectLanguage";
 

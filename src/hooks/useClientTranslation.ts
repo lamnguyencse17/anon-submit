@@ -1,4 +1,4 @@
-import { useInnerClientTranslation } from "@/app/i18n/client";
+import { useInnerClientTranslation } from "@/i18n/client";
 import { languageNamespace } from "@/constants/settings";
 import useLanguageStore from "@/stores/language";
 

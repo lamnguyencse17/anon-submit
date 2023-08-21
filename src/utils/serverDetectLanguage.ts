@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 import languageParser from "accept-language-parser";
-import { fallbackLng } from "@/app/i18n/settings";
+import { fallbackLng } from "@/i18n/settings";
 
 const serverDetectLanguage = () => {
   const languageHeader = headers().get("accept-language");
