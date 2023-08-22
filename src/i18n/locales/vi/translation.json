@@ -32,11 +32,14 @@
     },
     "cta": "Đăng ký"
   },
-  "organization_dashboard": {
-    "empty": {
-      "title": "Bạn tham gia tổ chức nào",
-      "description": "Để bắt đầu, bạn cần tham gia một tổ chức. Nếu bạn là một quản trị viên, bạn có thể tạo một tổ chức mới",
-      "cta": "Tạo tổ chức mới"
-    }
+  "create_organization": {
+    "title": "Create an organization",
+    "subtitle": "There will be more settings later for you",
+    "placeholder": {
+      "name": "Name",
+      "description": "Description",
+      "url": "Your website URL"
+    },
+    "cta": "Create"
   }
 }

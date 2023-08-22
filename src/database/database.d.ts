@@ -11,7 +11,7 @@ export type UserType = "ADMIN" | "USER";
 export interface Attachments {
   id: Generated<number>;
   url: string;
-  submission_id: string;
+  submission_id: string | null;
   created_at: Generated<Timestamp>;
   updated_at: Generated<Timestamp>;
   deleted_at: Timestamp | null;
@@ -22,6 +22,9 @@ export interface Organizations {
   name: string;
   created_at: Generated<Timestamp>;
   updated_at: Generated<Timestamp>;
+  cover: string | null;
+  description: string | null;
+  original_url: string | null;
   deleted_at: Timestamp | null;
   owned_by: number | null;
 }

@@ -1,5 +1,8 @@
 import Image from "next/image";
 import Logo from "@/assets/logo.svg";
+import SimpleIcon from "@/assets/simple.svg";
+import PowerfulIcon from "@/assets/powerful.svg";
+import AnonymousIcon from "@/assets/anonymous.svg";
 import getServerTranslation from "@/hooks/getServerTranslation";
 
 export default async function Home() {
@@ -13,21 +16,42 @@ export default async function Home() {
       <div className="mt-12 flex w-full flex-1 flex-row space-x-2">
         <div className="flex h-full w-1/3 flex-col items-center">
           <h2 className="text-2xl">{t("landing.property_simple")}</h2>
-          <h3 className="mt-4 text-center text-xl">
+          <h3 className="mt-4 flex-1 text-center text-xl">
             {t("landing.property_simple_description")}
           </h3>
+          <Image
+            src={SimpleIcon}
+            alt="AnonSubmit Logo"
+            width={100}
+            height={100}
+            className="mb-16"
+          />
         </div>
         <div className="flex h-full w-1/3 flex-col items-center">
           <h2 className="text-2xl">{t("landing.property_powerful")}</h2>
-          <h3 className="mt-4 text-center text-xl">
+          <h3 className="mt-4 flex-1 text-center text-xl">
             {t("landing.property_powerful_description")}
           </h3>
+          <Image
+            src={PowerfulIcon}
+            alt="AnonSubmit Logo"
+            width={100}
+            height={100}
+            className="mb-16"
+          />
         </div>
         <div className="flex h-full w-1/3 flex-col items-center">
           <h2 className="text-2xl">{t("landing.property_anonymous")}</h2>
-          <h3 className="mt-4 text-center text-xl">
+          <h3 className="mt-4 flex-1 text-center text-xl">
             {t("landing.property_anonymous_description")}
           </h3>
+          <Image
+            src={AnonymousIcon}
+            alt="AnonSubmit Logo"
+            width={100}
+            height={100}
+            className="mb-16"
+          />
         </div>
       </div>
     </main>

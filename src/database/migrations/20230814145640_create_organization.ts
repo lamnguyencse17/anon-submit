@@ -6,11 +6,14 @@ export const up = async (db: Kysely<any>) => {
     .addColumn("id", "serial", (col) => col.primaryKey())
     .addColumn("name", "varchar(50)", (col) => col.notNull())
     .addColumn("created_at", "timestamp", (col) =>
-      col.defaultTo(sql`now()`).notNull()
+      col.defaultTo(sql`now()`).notNull(),
     )
     .addColumn("updated_at", "timestamp", (col) =>
-      col.defaultTo(sql`now()`).notNull()
+      col.defaultTo(sql`now()`).notNull(),
     )
+    .addColumn("cover", "text")
+    .addColumn("description", "text")
+    .addColumn("original_url", "text")
     .addColumn("deleted_at", "timestamp")
     .addColumn("owned_by", "integer", (col) => col.references("users.id"))
     .execute();

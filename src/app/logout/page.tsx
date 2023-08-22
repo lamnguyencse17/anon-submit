@@ -1,5 +1,4 @@
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import LogoutHook from "./LogoutHook";
 
 const logout = async () => {

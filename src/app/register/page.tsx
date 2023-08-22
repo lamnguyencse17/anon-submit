@@ -1,11 +1,11 @@
-import { cookies } from "next/headers";
 import { RegisterForm } from "./form";
 import { redirect } from "next/navigation";
 import getServerTranslation from "@/hooks/getServerTranslation";
+import serverHandleAuthentication from "@/utils/serverHook/serverHandleAuthentication";
 
 const RegisterPage = async () => {
-  const token = cookies().get("Authorization")?.value;
-  if (token) {
+  const { token, user } = await serverHandleAuthentication();
+  if (token && user) {
     redirect("/");
   }
   const { t } = await getServerTranslation();

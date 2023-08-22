@@ -38,5 +38,15 @@
       "description": "You can create your own organization below or ask someone to invite you to theirs",
       "cta": "Create an organization"
     }
+  },
+  "create_organization": {
+    "title": "Create an organization",
+    "subtitle": "There will be more settings later for you",
+    "placeholder": {
+      "name": "Name",
+      "description": "Description",
+      "url": "Your website URL"
+    },
+    "cta": "Create"
   }
 }
