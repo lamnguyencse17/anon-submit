@@ -33,7 +33,7 @@ export default async function RootLayout({
     <html
       lang={language}
       dir={dir(language)}
-      className="flex h-screen w-screen flex-col items-center bg-primary font-vnpro"
+      className="bg-light flex h-screen w-screen flex-col items-center font-vnpro"
     >
       <body
         className={`${inter.className} flex h-full w-full flex-col items-center`}

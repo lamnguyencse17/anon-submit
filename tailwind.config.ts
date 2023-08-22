@@ -17,9 +17,11 @@ const config: Config = {
         vnpro: ["var(--be-vietnam-pro)"],
       },
       colors: {
-        primary: "#FAF0E6",
-        secondary: "#B9B4C7",
+        primary: "#6E7271",
+        secondary: "#384D48",
         dark: "#352F44",
+        light: "#E2E2E2",
+        greeny: "#ACAD94",
       },
     },
   },

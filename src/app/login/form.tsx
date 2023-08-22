@@ -44,7 +44,7 @@ export const LoginForm = () => {
         {...register("email")}
         placeholder={t("login.placeholder.email")}
         type="email"
-        className="mt-4 w-full rounded border border-secondary p-2 focus:outline-dark"
+        className="placeholder:text-greeny mt-4 w-full rounded border border-secondary p-2 focus:outline-dark"
       />
       <p
         className={`text-left text-sm text-red-700 ${
@@ -58,7 +58,7 @@ export const LoginForm = () => {
         {...register("password")}
         placeholder={t("login.placeholder.password")}
         type="password"
-        className="mt-4 w-full rounded border border-secondary p-2 focus:outline-dark"
+        className="placeholder:text-greeny mt-4 w-full rounded border border-secondary p-2 focus:outline-dark"
       />
       <p
         className={`text-left text-sm text-red-700 ${
@@ -70,7 +70,7 @@ export const LoginForm = () => {
 
       <button
         type="submit"
-        className="border-1 mx-auto mt-4 w-1/4 rounded border border-dark bg-secondary p-2 hover:border hover:border-dark hover:bg-primary hover:text-dark"
+        className="text-light border-1 hover:bg-light mx-auto mt-4 w-1/4 rounded border border-secondary bg-secondary p-2 hover:border hover:border-secondary hover:text-secondary"
         disabled={pending}
       >
         {t("login.cta")}

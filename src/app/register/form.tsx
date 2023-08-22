@@ -42,7 +42,7 @@ export const RegisterForm = () => {
         {...register("name")}
         placeholder={t("register.placeholder.name")}
         type="text"
-        className="w-full rounded border border-secondary p-2 focus:outline-dark"
+        className="placeholder:text-greeny w-full rounded border border-secondary p-2 focus:outline-dark"
       />
       <p
         className={`text-left text-sm text-red-700 ${
@@ -55,7 +55,7 @@ export const RegisterForm = () => {
         {...register("email")}
         placeholder={t("register.placeholder.email")}
         type="email"
-        className="mt-4 w-full rounded border border-secondary p-2 focus:outline-dark"
+        className="placeholder:text-greeny mt-4 w-full rounded border border-secondary p-2 focus:outline-dark"
       />
       <p
         className={`text-left text-sm text-red-700 ${
@@ -69,7 +69,7 @@ export const RegisterForm = () => {
         {...register("password")}
         placeholder={t("register.placeholder.password")}
         type="password"
-        className="mt-4 w-full rounded border border-secondary p-2 focus:outline-dark"
+        className="placeholder:text-greeny mt-4 w-full rounded border border-secondary p-2 focus:outline-dark"
       />
       <p
         className={`text-left text-sm text-red-700 ${
@@ -83,7 +83,7 @@ export const RegisterForm = () => {
         {...register("confirmPassword")}
         placeholder={t("register.placeholder.password_confirm")}
         type="password"
-        className="mt-4 w-full rounded border border-secondary p-2 focus:outline-dark"
+        className="placeholder:text-greeny mt-4 w-full rounded border border-secondary p-2 focus:outline-dark"
       />
       <p
         className={`text-left text-sm text-red-700 ${
@@ -95,7 +95,7 @@ export const RegisterForm = () => {
 
       <button
         type="submit"
-        className="border-1 mx-auto mt-4 w-1/4 rounded border border-dark bg-secondary p-2 hover:border hover:border-dark hover:bg-primary hover:text-dark"
+        className="text-light border-1 hover:bg-light mx-auto mt-4 w-1/4 rounded border border-secondary bg-secondary p-2 hover:border hover:border-secondary hover:text-secondary"
         disabled={pending}
       >
         {t("register.cta")}

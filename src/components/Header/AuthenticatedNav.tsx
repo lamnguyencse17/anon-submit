@@ -10,12 +10,12 @@ const AuthenticatedNav = () => {
     return (
       <div className="flex w-full flex-1 flex-row space-x-4 pl-12">
         <div className="flex-1">
-          <Link href="/organizations" className="hover:text-primary" prefetch>
+          <Link href="/organizations" className="hover:text-greeny" prefetch>
             {t("header.organizations")}
           </Link>
         </div>
         <div className="justify-end">
-          <Link href="/logout" className="hover:text-primary">
+          <Link href="/logout" className="hover:text-greeny">
             {t("header.logout")}
           </Link>
         </div>

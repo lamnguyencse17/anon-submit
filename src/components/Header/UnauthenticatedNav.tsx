@@ -10,10 +10,10 @@ const UnauthenticatedNav = () => {
   if (shouldShowUnauthNav)
     return (
       <div className="flex flex-1 flex-row justify-end space-x-4 ">
-        <Link href="/register" className="hover:text-primary">
+        <Link href="/register" className="hover:text-greeny">
           {t("header.register")}
         </Link>
-        <Link href="/login" className="hover:text-primary">
+        <Link href="/login" className="hover:text-greeny">
           {t("header.login")}
         </Link>
       </div>
