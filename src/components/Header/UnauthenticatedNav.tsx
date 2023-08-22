@@ -1,6 +1,7 @@
 "use client";
 import useClientTranslation from "@/hooks/useClientTranslation";
 import useUserStore from "@/stores/user";
+import Link from "next/link";
 
 const UnauthenticatedNav = () => {
   const shouldShowUnauthNav = useUserStore((state) => state.data == null);
@@ -9,12 +10,12 @@ const UnauthenticatedNav = () => {
   if (shouldShowUnauthNav)
     return (
       <div className="flex flex-1 flex-row justify-end space-x-4 ">
-        <a href="/register" className="hover:text-primary">
+        <Link href="/register" className="hover:text-primary">
           {t("header.register")}
-        </a>
-        <a href="/login" className="hover:text-primary">
+        </Link>
+        <Link href="/login" className="hover:text-primary">
           {t("header.login")}
-        </a>
+        </Link>
       </div>
     );
   return null;

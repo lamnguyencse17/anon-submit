@@ -1,4 +1,5 @@
 import getServerTranslation from "@/hooks/getServerTranslation";
+import Link from "next/link";
 
 const EmptyOrgranizations = async () => {
   const { t } = await getServerTranslation();
@@ -10,12 +11,12 @@ const EmptyOrgranizations = async () => {
       <h2 className="text-center text-xl text-dark">
         {t("organization_dashboard.empty.description")}
       </h2>
-      <a
+      <Link
         href="#"
         className="rounded-xl border border-dark bg-secondary px-8 py-4 font-semibold text-dark hover:bg-primary"
       >
         {t("organization_dashboard.empty.cta")}
-      </a>
+      </Link>
     </main>
   );
 };
