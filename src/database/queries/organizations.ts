@@ -54,3 +54,7 @@ export const dbGetOrganizationsByUserId = async (userId: number) => {
     return [];
   }
 };
+
+export type OrganizationsRecord = NonNullable<
+  Awaited<ReturnType<typeof dbGetOrganizationsByUserId>>
+>;

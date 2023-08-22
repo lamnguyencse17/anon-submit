@@ -1,3 +1,4 @@
+import EmptyOrgranizations from "@/components/Organizations/root/EmptyOrganizations";
 import { dbGetOrganizationsByUserId } from "@/database/queries/organizations";
 import serverHandleAuthentication from "@/utils/serverHook/serverHandleAuthentication";
 import camelcaseKeys from "camelcase-keys";
@@ -15,6 +16,9 @@ const fetchOrganizations = async () => {
 
 const OrganizationsPage = async () => {
   const organizations = await fetchOrganizations();
+  if (organizations.length === 0) {
+    return <EmptyOrgranizations />;
+  }
   return <></>;
 };
 
