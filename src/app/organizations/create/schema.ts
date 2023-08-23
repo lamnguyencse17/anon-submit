@@ -9,10 +9,13 @@ export const ACCEPTED_IMAGE_TYPES = [
 
 export const MAX_FILE_SIZE = 3000000;
 
-export const createOrganizationSchema = z.object({
+export const rawCreateOrganizationSchema = z.object({
   name: z.string().min(3).max(30),
   originalUrl: z.string().optional().or(z.string().url()),
   description: z.string().optional().or(z.string().min(3).max(256)),
+});
+
+export const createOrganizationSchema = rawCreateOrganizationSchema.extend({
   cover: z
     .any()
     .refine((files: FileList) => {
@@ -29,3 +32,22 @@ export type CreateOrganizationData = Omit<
   z.infer<typeof createOrganizationSchema>,
   "cover"
 > & { cover?: FileList };
+
+export const receivedCreateOrganizationSchema =
+  rawCreateOrganizationSchema.extend({
+    cover: z
+      .any()
+      .refine((file: File) => {
+        if (!file) return true;
+        return file && file.size <= MAX_FILE_SIZE;
+      })
+      .refine((file: File) => {
+        if (!file) return true;
+        return file;
+      }),
+  });
+
+export type SentCreateOrganizationData = Omit<
+  z.infer<typeof receivedCreateOrganizationSchema>,
+  "cover"
+> & { cover?: File };
