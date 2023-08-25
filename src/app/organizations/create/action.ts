@@ -1,25 +1,17 @@
 "use server";
 import { dbCreateNewOrganization } from "@/database/queries/organizations";
-import { uploadImage } from "@/services/cloudinary";
-import serverHandleAuthentication from "@/utils/serverHook/serverHandleAuthentication";
-import fs from "fs/promises";
+import serverHandleAuthentication from "@/utils/server/hooks/serverHandleAuthentication";
 import { receivedCreateOrganizationSchema } from "./schema";
 import camelcaseKeys from "camelcase-keys";
-import { nanoid } from "nanoid/async";
-import mime from "mime-types";
+import { deleteImage, processUploadImage } from "@/utils/server/image";
 
-const processUploadImage = async (cover: File) => {
-  const extension = mime.extension(cover.type);
-  if (!extension) {
-    return undefined;
+const undoAction = async (imageId: string) => {
+  try {
+    await deleteImage(imageId);
+    return true;
+  } catch {
+    return false;
   }
-  const coverBuffer = await cover.arrayBuffer();
-  const tempFileName = await nanoid(20);
-  const tempPath = `/tmp/${tempFileName}.${extension}`;
-  await fs.writeFile(tempPath, Buffer.from(coverBuffer));
-  const uploadCoverResult = await uploadImage(tempPath);
-  await fs.unlink(tempPath);
-  return uploadCoverResult;
 };
 
 export const handleCreateOrganization = async (
@@ -70,6 +62,12 @@ export const handleCreateOrganization = async (
     original_url: validatedData.originalUrl,
   });
   if (!createOrganizationResult) {
+    if (imageId) {
+      const undoResult = await undoAction(imageId);
+      if (!undoResult) {
+        console.log("UNDO ACTION FAILED");
+      }
+    }
     return {
       status: 500,
       message: "Something went wrong",

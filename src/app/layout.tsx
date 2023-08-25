@@ -4,8 +4,8 @@ import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
 import RootHook from "@/components/RootHook";
 import { dir } from "i18next";
-import serverDetectLanguage from "@/utils/serverHook/serverDetectLanguage";
-import serverHandleAuthentication from "@/utils/serverHook/serverHandleAuthentication";
+import serverDetectLanguage from "@/utils/server/hooks/serverDetectLanguage";
+import serverHandleAuthentication from "@/utils/server/hooks/serverHandleAuthentication";
 
 const inter = Be_Vietnam_Pro({
   variable: "--be-vietnam-pro",
@@ -33,7 +33,7 @@ export default async function RootLayout({
     <html
       lang={language}
       dir={dir(language)}
-      className="bg-light flex h-screen w-screen flex-col items-center font-vnpro"
+      className="flex h-screen w-screen flex-col items-center bg-light font-vnpro"
     >
       <body
         className={`${inter.className} flex h-full w-full flex-col items-center`}

@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { LoginForm } from "./form";
 import getServerTranslation from "@/hooks/getServerTranslation";
-import serverHandleAuthentication from "@/utils/serverHook/serverHandleAuthentication";
+import serverHandleAuthentication from "@/utils/server/hooks/serverHandleAuthentication";
 
 const loginPage = async () => {
   const { token, user } = await serverHandleAuthentication();

@@ -1,3 +1,4 @@
+import { MAX_FILE_SIZE } from "@/constants/settings";
 import { z } from "zod";
 
 export const ACCEPTED_IMAGE_TYPES = [
@@ -6,8 +7,6 @@ export const ACCEPTED_IMAGE_TYPES = [
   "image/png",
   "image/webp",
 ];
-
-export const MAX_FILE_SIZE = 3000000;
 
 export const rawCreateOrganizationSchema = z.object({
   name: z.string().min(3).max(30),

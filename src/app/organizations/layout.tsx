@@ -1,4 +1,4 @@
-import serverRequireAuthentication from "@/utils/serverHook/serverRequireAuthentication";
+import serverRequireAuthentication from "@/utils/server/hooks/serverRequireAuthentication";
 import { ReactNode } from "react";
 
 const OrganizationsLayout = async ({ children }: { children: ReactNode }) => {
