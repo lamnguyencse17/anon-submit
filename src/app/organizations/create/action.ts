@@ -33,6 +33,7 @@ export const handleCreateOrganization = async (
     };
   }
   const creationData = Object.fromEntries(createOrganizationFormData.entries());
+  console.log(creationData);
   Object.keys(creationData).forEach((key) => {
     if (creationData[key] === "") {
       delete creationData[key];

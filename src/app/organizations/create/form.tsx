@@ -5,6 +5,9 @@ import { CreateOrganizationData, createOrganizationSchema } from "./schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { handleCreateOrganization } from "./action";
+import { SUCCESSFUL_STATUS } from "@/constants/status";
+import { useRouter } from "next/navigation";
+import { compressImage } from "@/utils/image";
 
 const CreateOrganizationForm = () => {
   const { t } = useClientTranslation();
@@ -17,6 +20,7 @@ const CreateOrganizationForm = () => {
   } = useForm<CreateOrganizationData>({
     resolver: zodResolver(createOrganizationSchema as any),
   });
+  const router = useRouter();
   return (
     <form
       className="flex w-2/3 flex-col"
@@ -26,11 +30,7 @@ const CreateOrganizationForm = () => {
         const createOrganizationData = getValues();
         const formData = new FormData();
         Object.keys(createOrganizationData).forEach((key) => {
-          console.log(
-            createOrganizationData[key as keyof CreateOrganizationData],
-          );
           if (key === "cover" && createOrganizationData["cover"]) {
-            formData.append("cover", createOrganizationData["cover"][0]);
             return;
           }
           formData.append(
@@ -40,14 +40,20 @@ const CreateOrganizationForm = () => {
             ] as string,
           );
         });
-        console.log(Object.fromEntries(formData.entries()));
-        await handleCreateOrganization(formData);
-        // if (response.status === SUCCESSFUL_STATUS) {
-        //   const userData = response.data;
-        //   if (userData) {
-        //     setUser(userData);
-        //   }
-        // }
+        if (createOrganizationData.cover) {
+          const coverFileList = createOrganizationData["cover"] as FileList;
+          const orginalCoverFile = coverFileList[0];
+          if (orginalCoverFile) {
+            const compressedImage = await compressImage(orginalCoverFile);
+            formData.append("cover", compressedImage);
+          }
+        }
+        const response = await handleCreateOrganization(formData);
+        if (response.status === SUCCESSFUL_STATUS) {
+          const organizationData = response.data;
+          if (!organizationData) return;
+          router.push(`/organizations/manage/${organizationData.id}`);
+        }
       }}
     >
       <input

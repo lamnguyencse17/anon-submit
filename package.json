@@ -27,6 +27,7 @@
     "bcryptjs": "^2.4.3",
     "camelcase-keys": "^9.0.0",
     "cloudinary": "^1.40.0",
+    "compressorjs": "^1.2.1",
     "dayjs": "^1.11.9",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.13",
