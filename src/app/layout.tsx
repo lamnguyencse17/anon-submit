@@ -1,11 +1,8 @@
-import Header from "@/components/Header";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
-import RootHook from "@/components/RootHook";
 import { dir } from "i18next";
 import serverDetectLanguage from "@/hooks/server/serverDetectLanguage";
-import serverHandleAuthentication from "@/hooks/server/serverHandleAuthentication";
 
 const inter = Be_Vietnam_Pro({
   variable: "--be-vietnam-pro",
@@ -23,10 +20,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const authData = await serverHandleAuthentication();
-  const user = authData.user;
-  const token = authData.token;
-  const tokenPayload = authData.tokenData;
   const language = serverDetectLanguage();
 
   return (
@@ -38,13 +31,7 @@ export default async function RootLayout({
       <body
         className={`${inter.className} flex h-full w-full flex-col items-center`}
       >
-        <RootHook
-          user={user}
-          tokenData={{ ...tokenPayload, token }}
-          language={language}
-        />
-        <Header />
-        <div className="container flex flex-1 flex-col px-8">{children}</div>
+        <div className="flex w-full flex-1 flex-col">{children}</div>
       </body>
     </html>
   );
