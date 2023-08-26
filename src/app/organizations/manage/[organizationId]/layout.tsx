@@ -1,4 +1,5 @@
 import OrganizationInfo from "@/components/Organizations/manage/OrganizationInfo";
+import serverValidateOrganizationAccess from "@/hooks/server/serverValidateOrganizationAccess";
 import { FunctionComponent } from "react";
 
 type ManageOrganizationLayoutProps = {
@@ -10,10 +11,11 @@ type ManageOrganizationLayoutProps = {
 
 const ManageOrganizationLayout: FunctionComponent<
   ManageOrganizationLayoutProps
-> = ({ children, params: { organizationId } }) => {
+> = async ({ children, params: { organizationId } }) => {
+  const organization = await serverValidateOrganizationAccess(organizationId);
   return (
     <div className="flex h-full w-full flex-col space-y-4">
-      <OrganizationInfo organizationId={parseInt(organizationId)} />
+      <OrganizationInfo organization={organization} />
       {children}
     </div>
   );

@@ -6,7 +6,6 @@ import RootHook from "@/components/RootHook";
 import { dir } from "i18next";
 import serverDetectLanguage from "@/hooks/server/serverDetectLanguage";
 import serverHandleAuthentication from "@/hooks/server/serverHandleAuthentication";
-import Loading from "@/components/Loading";
 
 const inter = Be_Vietnam_Pro({
   variable: "--be-vietnam-pro",

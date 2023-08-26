@@ -1,16 +1,11 @@
 import EmptyOrgranizations from "@/components/Organizations/root/EmptyOrganizations";
 import OrganizationList from "@/components/Organizations/root/OrganizationList";
 import { dbGetOrganizationsByUserId } from "@/database/queries/organizations";
-import serverHandleAuthentication from "@/hooks/server/serverHandleAuthentication";
+import serverRequireAuthentication from "@/hooks/server/serverRequireAuthentication";
 import camelcaseKeys from "camelcase-keys";
-import { redirect } from "next/navigation";
 
 const fetchOrganizations = async () => {
-  const authData = await serverHandleAuthentication();
-  const user = authData.user;
-  if (!user) {
-    redirect("/login");
-  }
+  const { user } = await serverRequireAuthentication();
   const fetchedOrganizations = await dbGetOrganizationsByUserId(user.id);
   return camelcaseKeys(fetchedOrganizations, { deep: true });
 };

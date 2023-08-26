@@ -1,9 +1,9 @@
 "use server";
 import { dbCreateNewOrganization } from "@/database/queries/organizations";
-import serverHandleAuthentication from "@/hooks/server/serverHandleAuthentication";
 import { receivedCreateOrganizationSchema } from "./schema";
 import camelcaseKeys from "camelcase-keys";
 import { deleteImage, processUploadImage } from "@/utils/server/image";
+import serverRequireAuthentication from "@/hooks/server/serverRequireAuthentication";
 
 const undoAction = async (imageId: string) => {
   try {
@@ -17,15 +17,8 @@ const undoAction = async (imageId: string) => {
 export const handleCreateOrganization = async (
   createOrganizationFormData: FormData,
 ) => {
-  const { user, token } = await serverHandleAuthentication();
-  if (!user || !token) {
-    return {
-      status: 401,
-      message: "Unauthorized",
-    };
-  }
+  const { user } = await serverRequireAuthentication();
   const creationData = Object.fromEntries(createOrganizationFormData.entries());
-  console.log(creationData);
   Object.keys(creationData).forEach((key) => {
     if (creationData[key] === "") {
       delete creationData[key];

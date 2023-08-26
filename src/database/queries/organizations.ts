@@ -81,3 +81,7 @@ export const dbGetSingleOrganizationById = async (
     return undefined;
   }
 };
+
+export type OrganizationSingleRecord = NonNullable<
+  Awaited<ReturnType<typeof dbGetSingleOrganizationById>>
+>;

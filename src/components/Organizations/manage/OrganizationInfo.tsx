@@ -1,28 +1,15 @@
-import { dbGetSingleOrganizationById } from "@/database/queries/organizations";
-import serverHandleAuthentication from "@/hooks/server/serverHandleAuthentication";
 import { FunctionComponent } from "react";
 import OrganizationCard from "../root/OrganizationCard";
-import camelcaseKeys from "camelcase-keys";
+import { CamelCasedPropertiesDeep } from "type-fest";
+import { OrganizationSingleRecord } from "@/database/queries/organizations";
 
 type OrganizationInfoProps = {
-  organizationId: number;
+  organization: CamelCasedPropertiesDeep<OrganizationSingleRecord>;
 };
 
 const OrganizationInfo: FunctionComponent<OrganizationInfoProps> = async ({
-  organizationId,
+  organization,
 }) => {
-  const { user } = await serverHandleAuthentication();
-  if (!user) {
-    return null;
-  }
-  const rawOrganization = await dbGetSingleOrganizationById(
-    organizationId,
-    user.id,
-  );
-  if (!rawOrganization) {
-    return null;
-  }
-  const organization = camelcaseKeys(rawOrganization, { deep: true });
   return <OrganizationCard organization={organization} />;
 };
 
