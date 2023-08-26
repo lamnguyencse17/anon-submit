@@ -1,4 +1,7 @@
 {
+  "shared": {
+    "loading": "Chúng tôi đang chuẩn bị mọi thứ"
+  },
   "header": {
     "login": "Đăng nhập",
     "register": "Đăng ký",

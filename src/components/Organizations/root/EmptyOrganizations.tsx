@@ -21,7 +21,7 @@ const EmptyOrgranizations = async () => {
       </h2>
       <Link
         href="/organizations/create"
-        className="text-light hover:bg-greeny rounded-xl border border-dark bg-secondary px-8 py-4 font-semibold hover:border-secondary hover:text-secondary"
+        className="rounded-xl border border-dark bg-secondary px-8 py-4 font-semibold text-light hover:border-secondary hover:bg-greeny hover:text-secondary"
       >
         {t("organization_dashboard.empty.cta")}
       </Link>

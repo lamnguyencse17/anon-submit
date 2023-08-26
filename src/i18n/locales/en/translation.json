@@ -1,4 +1,7 @@
 {
+  "shared": {
+    "loading": "We are brewing your coffee..."
+  },
   "header": {
     "login": "Login",
     "register": "Register",

@@ -1,4 +1,5 @@
 import EmptyOrgranizations from "@/components/Organizations/root/EmptyOrganizations";
+import OrganizationList from "@/components/Organizations/root/OrganizationList";
 import { dbGetOrganizationsByUserId } from "@/database/queries/organizations";
 import serverHandleAuthentication from "@/utils/server/hooks/serverHandleAuthentication";
 import camelcaseKeys from "camelcase-keys";
@@ -19,7 +20,7 @@ const OrganizationsPage = async () => {
   if (organizations.length === 0) {
     return <EmptyOrgranizations />;
   }
-  return <></>;
+  return <OrganizationList organizations={organizations} />;
 };
 
 export default OrganizationsPage;
