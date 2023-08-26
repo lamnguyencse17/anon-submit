@@ -57,7 +57,11 @@
   },
   "manage_organization": {
     "info": {
-      "original_url": "Original URL"
+      "original_url": "Original URL: ",
+      "description": "Description: ",
+      "nav_submissions": "Submissions",
+      "nav_settings": "Settings",
+      "nav_members": "Members"
     }
   }
 }

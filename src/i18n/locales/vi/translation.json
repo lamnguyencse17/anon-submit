@@ -36,23 +36,32 @@
     "cta": "Đăng ký"
   },
   "create_organization": {
-    "title": "Create an organization",
-    "subtitle": "There will be more settings later for you",
+    "title": "Tạo một tổ chức",
+    "subtitle": "Sẽ có nhiều cài đặt khác sau cho bạn",
     "placeholder": {
-      "name": "Name",
-      "description": "Description",
-      "url": "Your website URL"
+      "name": "Tên",
+      "description": "Mô tả",
+      "url": "URL trang web của bạn"
     },
-    "cta": "Create"
+    "cta": "Tạo"
   },
   "organization_dashboard": {
     "empty": {
-      "title": "Apparently you are not in any organizations yet",
-      "description": "You can create your own organization below or ask someone to invite you to theirs",
-      "cta": "Create an organization"
+      "title": "Có vẻ như bạn chưa tham gia vào bất kỳ tổ chức nào",
+      "description": "Bạn có thể tạo tổ chức của riêng bạn bên dưới hoặc yêu cầu ai đó mời bạn vào tổ chức của họ",
+      "cta": "Tạo một tổ chức"
     },
     "list": {
-      "title": "Here are your organizations"
+      "title": "Dưới đây là các tổ chức của bạn"
+    }
+  },
+  "manage_organization": {
+    "info": {
+      "original_url": "URL Gốc: ",
+      "description": "Mô tả: ",
+      "nav_submissions": "Các Đợt nộp",
+      "nav_settings": "Cài đặt",
+      "nav_members": "Thành viên"
     }
   }
 }
