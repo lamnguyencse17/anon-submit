@@ -4,8 +4,8 @@ import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
 import RootHook from "@/components/RootHook";
 import { dir } from "i18next";
-import serverDetectLanguage from "@/utils/server/hooks/serverDetectLanguage";
-import serverHandleAuthentication from "@/utils/server/hooks/serverHandleAuthentication";
+import serverDetectLanguage from "@/hooks/server/serverDetectLanguage";
+import serverHandleAuthentication from "@/hooks/server/serverHandleAuthentication";
 import Loading from "@/components/Loading";
 
 const inter = Be_Vietnam_Pro({

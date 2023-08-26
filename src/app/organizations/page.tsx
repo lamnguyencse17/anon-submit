@@ -1,7 +1,7 @@
 import EmptyOrgranizations from "@/components/Organizations/root/EmptyOrganizations";
 import OrganizationList from "@/components/Organizations/root/OrganizationList";
 import { dbGetOrganizationsByUserId } from "@/database/queries/organizations";
-import serverHandleAuthentication from "@/utils/server/hooks/serverHandleAuthentication";
+import serverHandleAuthentication from "@/hooks/server/serverHandleAuthentication";
 import camelcaseKeys from "camelcase-keys";
 import { redirect } from "next/navigation";
 

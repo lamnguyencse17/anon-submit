@@ -1,6 +1,6 @@
 import { getInnerServerTranslation } from "@/i18n";
 import { languageNamespace } from "@/constants/settings";
-import serverDetectLanguage from "@/utils/server/hooks/serverDetectLanguage";
+import serverDetectLanguage from "@/hooks/server/serverDetectLanguage";
 
 const getServerTranslation = () => {
   const language = serverDetectLanguage();

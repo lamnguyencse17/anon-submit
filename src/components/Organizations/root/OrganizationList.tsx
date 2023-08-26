@@ -5,20 +5,25 @@ import { CamelCasedPropertiesDeep } from "type-fest";
 import EmptyIcon from "@/assets/empty.svg";
 import { Spinner } from "@/components/Loading";
 import OrganizationCard from "./OrganizationCard";
+import getServerTranslation from "@/hooks/server/getServerTranslation";
 
 type OrganizationListProps = {
   organizations: CamelCasedPropertiesDeep<OrganizationsRecord>;
 };
 
-const OrganizationList: FunctionComponent<OrganizationListProps> = ({
+const OrganizationList: FunctionComponent<OrganizationListProps> = async ({
   organizations,
 }) => {
+  const { t } = await getServerTranslation();
   return (
-    <main className="mt-16 flex h-full flex-col items-center space-y-8 text-secondary">
+    <>
+      <h2 className="text-2xl font-bold text-secondary">
+        {t("organization_dashboard.list.title")}
+      </h2>
       {organizations.map((organization) => (
         <OrganizationCard key={organization.id} organization={organization} />
       ))}
-    </main>
+    </>
   );
 };
 

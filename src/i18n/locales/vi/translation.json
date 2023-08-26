@@ -44,5 +44,15 @@
       "url": "Your website URL"
     },
     "cta": "Create"
+  },
+  "organization_dashboard": {
+    "empty": {
+      "title": "Apparently you are not in any organizations yet",
+      "description": "You can create your own organization below or ask someone to invite you to theirs",
+      "cta": "Create an organization"
+    },
+    "list": {
+      "title": "Here are your organizations"
+    }
   }
 }

@@ -1,5 +1,5 @@
 "use client";
-import useClientTranslation from "@/hooks/useClientTranslation";
+import useClientTranslation from "@/hooks/client/useClientTranslation";
 import { useForm } from "react-hook-form";
 import { CreateOrganizationData, createOrganizationSchema } from "./schema";
 import { zodResolver } from "@hookform/resolvers/zod";

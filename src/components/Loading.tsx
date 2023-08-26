@@ -1,4 +1,4 @@
-import getServerTranslation from "@/hooks/getServerTranslation";
+import getServerTranslation from "@/hooks/server/getServerTranslation";
 import { FunctionComponent, SVGProps } from "react";
 
 type SpinnerProps = {

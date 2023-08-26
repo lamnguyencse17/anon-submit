@@ -58,3 +58,26 @@ export const dbGetOrganizationsByUserId = async (userId: number) => {
 export type OrganizationsRecord = NonNullable<
   Awaited<ReturnType<typeof dbGetOrganizationsByUserId>>
 >;
+
+export const dbGetSingleOrganizationById = async (
+  id: number,
+  userId: number,
+) => {
+  try {
+    const organization = await db
+      .selectFrom("organizations")
+      .where("organizations.id", "=", id)
+      .innerJoin(
+        "user_organization",
+        "user_organization.organization_id",
+        "organizations.id",
+      )
+      .where("user_organization.user_id", "=", userId)
+      .selectAll()
+      .executeTakeFirst();
+    return organization;
+  } catch (err) {
+    console.log(err);
+    return undefined;
+  }
+};

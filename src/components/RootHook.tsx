@@ -1,8 +1,8 @@
 "use client";
 
 import { GetUserRecord } from "@/database/queries/users";
-import useAuth from "@/hooks/useAuth";
-import useLanguage from "@/hooks/useLanguage";
+import useAuth from "@/hooks/client/useAuth";
+import useLanguage from "@/hooks/client/useLanguage";
 import { StoredTokenData } from "@/stores/token";
 import { FunctionComponent } from "react";
 import { CamelCasedPropertiesDeep } from "type-fest";

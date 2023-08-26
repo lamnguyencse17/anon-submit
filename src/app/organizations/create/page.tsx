@@ -1,4 +1,4 @@
-import getServerTranslation from "@/hooks/getServerTranslation";
+import getServerTranslation from "@/hooks/server/getServerTranslation";
 import CreateOrganizationForm from "./form";
 
 const CreateOrganizationPage = async () => {

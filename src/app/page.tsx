@@ -3,7 +3,7 @@ import Logo from "@/assets/logo.svg";
 import SimpleIcon from "@/assets/simple.svg";
 import PowerfulIcon from "@/assets/powerful.svg";
 import AnonymousIcon from "@/assets/anonymous.svg";
-import getServerTranslation from "@/hooks/getServerTranslation";
+import getServerTranslation from "@/hooks/server/getServerTranslation";
 
 export default async function Home() {
   const { t } = await getServerTranslation();

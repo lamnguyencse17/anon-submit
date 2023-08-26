@@ -1,5 +1,5 @@
 "use client";
-import userClientTranslation from "@/hooks/useClientTranslation";
+import userClientTranslation from "@/hooks/client/useClientTranslation";
 import useUserStore from "@/stores/user";
 import Link from "next/link";
 

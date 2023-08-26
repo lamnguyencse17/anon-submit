@@ -1,9 +1,9 @@
 import camelcaseKeys from "camelcase-keys";
 import { cookies } from "next/headers";
-import { TokenData, decodeToken } from "../../auth";
 import { GetUserRecord, getUserById } from "@/database/queries/users";
 import dayjs, { Dayjs } from "dayjs";
 import { CamelCasedPropertiesDeep } from "type-fest";
+import { TokenData, decodeToken } from "@/utils/auth";
 
 const authCache: Record<number, { date: Dayjs; user: GetUserRecord }> = {};
 

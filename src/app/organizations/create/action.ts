@@ -1,6 +1,6 @@
 "use server";
 import { dbCreateNewOrganization } from "@/database/queries/organizations";
-import serverHandleAuthentication from "@/utils/server/hooks/serverHandleAuthentication";
+import serverHandleAuthentication from "@/hooks/server/serverHandleAuthentication";
 import { receivedCreateOrganizationSchema } from "./schema";
 import camelcaseKeys from "camelcase-keys";
 import { deleteImage, processUploadImage } from "@/utils/server/image";
