@@ -54,5 +54,10 @@
       "url": "Your website URL"
     },
     "cta": "Create"
+  },
+  "manage_organization": {
+    "info": {
+      "original_url": "Original URL"
+    }
   }
 }

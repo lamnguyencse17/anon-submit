@@ -1,7 +1,7 @@
 import { RegisterForm } from "./form";
 import { redirect } from "next/navigation";
 import getServerTranslation from "@/hooks/server/getServerTranslation";
-import serverHandleAuthentication from "@/utils/server/hooks/serverHandleAuthentication";
+import serverHandleAuthentication from "@/hooks/server/serverHandleAuthentication";
 
 const RegisterPage = async () => {
   const { token, user } = await serverHandleAuthentication();
