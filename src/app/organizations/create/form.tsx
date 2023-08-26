@@ -109,7 +109,7 @@ const CreateOrganizationForm = () => {
       </p>
       <button
         type="submit"
-        className="border-1 mx-auto mt-4 w-1/4 rounded border border-secondary bg-secondary p-2 text-light hover:border hover:border-secondary hover:bg-light hover:text-secondary"
+        className="border-1 mx-auto mt-4 min-w-fit  rounded border border-secondary bg-secondary p-2 text-light hover:border hover:border-secondary hover:bg-light hover:text-secondary"
         disabled={pending}
       >
         {t("create_organization.cta")}
