@@ -1,16 +1,28 @@
 import { InsertObject } from "kysely";
 import { db } from "../client";
 import { DB } from "../database";
+import slugify from "@/utils/slugify";
+import { nanoid } from "nanoid/async";
 
 export const dbCreateNewOrganization = async (
   userId: number,
-  values: InsertObject<DB, "organizations">,
+  values: Omit<InsertObject<DB, "organizations">, "slug">,
 ) => {
   try {
+    let slug = slugify(values.name as string);
     const createdOrganization = await db.transaction().execute(async (trx) => {
+      const doesSlugExist = await trx
+        .selectFrom("organizations")
+        .where("slug", "=", slug)
+        .select("id")
+        .execute();
+      if (doesSlugExist) {
+        const randomPrefix = await nanoid(8);
+        slug = slugify(`${values.name}-${randomPrefix}`);
+      }
       const newOrganization = await trx
         .insertInto("organizations")
-        .values(values)
+        .values({ ...values, slug })
         .returningAll()
         .executeTakeFirst();
       if (!newOrganization) {

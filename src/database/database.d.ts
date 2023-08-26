@@ -27,6 +27,7 @@ export interface Organizations {
   original_url: string | null;
   deleted_at: Timestamp | null;
   owned_by: number | null;
+  slug: string;
 }
 
 export interface Submissions {
