@@ -1,22 +1,11 @@
-import {
-  getAllOrganizationSlugs,
-  getOrganizationForCustomerFromSlug,
-} from "@/database/queries/organizations";
 import env from "@/utils/env";
-import camelcaseKeys from "camelcase-keys";
 import { Metadata } from "next";
 import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { cache } from "react";
 import Logo from "@/assets/logo.svg";
 import CustomerSubmissionForm from "./form";
-
-const getOrganizationWithCache = cache(async (slug: string) => {
-  const organization = await getOrganizationForCustomerFromSlug(slug);
-  if (!organization) return undefined;
-  return camelcaseKeys(organization, { deep: true });
-});
+import { getOrganizationFromSlugWithCache } from "@/hooks/server/cached";
 
 // No SSG until this is resolve: https://github.com/vercel/next.js/issues/49408
 
@@ -36,7 +25,7 @@ type CustomerSubmitPageParams = {
 export const generateMetadata = async ({
   params: { organizationSlug },
 }: CustomerSubmitPageParams): Promise<Metadata> => {
-  const organization = await getOrganizationWithCache(organizationSlug);
+  const organization = await getOrganizationFromSlugWithCache(organizationSlug);
   if (!organization) return notFound();
 
   const title = `Send a message to ${organization.name}`;
@@ -69,7 +58,7 @@ export const generateMetadata = async ({
 const CustomerSubmitPage = async ({
   params: { organizationSlug },
 }: CustomerSubmitPageParams) => {
-  const organization = await getOrganizationWithCache(organizationSlug);
+  const organization = await getOrganizationFromSlugWithCache(organizationSlug);
   if (!organization) return notFound();
   return (
     <div className="container mx-auto flex flex-col items-center space-y-6 px-4">

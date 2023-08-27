@@ -1,7 +1,7 @@
-import { dbGetSingleOrganizationById } from "@/database/queries/organizations";
 import camelcaseKeys from "camelcase-keys";
 import serverRequireAuthentication from "./serverRequireAuthentication";
 import { redirect } from "next/navigation";
+import { getSingleOrganizationFromUserIdWithCache } from "./cached";
 
 const serverValidateOrganizationAccess = async (organizationId: string) => {
   const { user } = await serverRequireAuthentication();
@@ -9,7 +9,7 @@ const serverValidateOrganizationAccess = async (organizationId: string) => {
   if (Number.isNaN(parsedOrganizationId)) {
     return redirect("/organizations");
   }
-  const rawOrganization = await dbGetSingleOrganizationById(
+  const rawOrganization = await getSingleOrganizationFromUserIdWithCache(
     parsedOrganizationId,
     user.id,
   );
