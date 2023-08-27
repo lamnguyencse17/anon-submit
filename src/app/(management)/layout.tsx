@@ -1,9 +1,8 @@
-import Header from "@/components/Header";
+import Header from "@/components/management/Header";
 import "../globals.css";
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
-import RootHook from "@/components/RootHook";
-import { dir } from "i18next";
+import RootHook from "@/components/management/RootHook";
 import serverDetectLanguage from "@/hooks/server/serverDetectLanguage";
 import serverHandleAuthentication from "@/hooks/server/serverHandleAuthentication";
 

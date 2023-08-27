@@ -1,5 +1,5 @@
-import EmptyOrgranizations from "@/components/Organizations/root/EmptyOrganizations";
-import OrganizationList from "@/components/Organizations/root/OrganizationList";
+import EmptyOrgranizations from "@/components/management/Organizations/root/EmptyOrganizations";
+import OrganizationList from "@/components/management/Organizations/root/OrganizationList";
 import { dbGetOrganizationsByUserId } from "@/database/queries/organizations";
 import serverRequireAuthentication from "@/hooks/server/serverRequireAuthentication";
 import camelcaseKeys from "camelcase-keys";

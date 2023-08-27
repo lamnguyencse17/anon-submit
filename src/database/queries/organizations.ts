@@ -97,3 +97,34 @@ export const dbGetSingleOrganizationById = async (
 export type OrganizationSingleRecord = NonNullable<
   Awaited<ReturnType<typeof dbGetSingleOrganizationById>>
 >;
+
+export const getAllOrganizationSlugs = async () => {
+  try {
+    const organizations = await db
+      .selectFrom("organizations")
+      .select("slug")
+      .execute();
+    return organizations;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
+
+export const getOrganizationForCustomerFromSlug = async (slug: string) => {
+  try {
+    const organization = await db
+      .selectFrom("organizations")
+      .where("slug", "=", slug)
+      .select(["id", "name", "description", "cover", "original_url", "slug"])
+      .executeTakeFirst();
+    return organization;
+  } catch (err) {
+    console.log(err);
+    return undefined;
+  }
+};
+
+export type OrganizationSingleRecordForCustomer = NonNullable<
+  Awaited<ReturnType<typeof getOrganizationForCustomerFromSlug>>
+>;

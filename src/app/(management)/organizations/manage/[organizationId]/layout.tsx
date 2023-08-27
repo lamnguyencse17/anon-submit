@@ -1,4 +1,4 @@
-import OrganizationInfo from "@/components/Organizations/manage/OrganizationInfo";
+import OrganizationInfo from "@/components/management/Organizations/manage/OrganizationInfo";
 import serverValidateOrganizationAccess from "@/hooks/server/serverValidateOrganizationAccess";
 import { FunctionComponent } from "react";
 
