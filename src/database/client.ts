@@ -11,4 +11,10 @@ const dialect = new PostgresDialect({
 
 export const db = new Kysely<DB>({
   dialect,
+  log(event) {
+    if (event.level === "query" && process.env.NODE_ENV !== "production") {
+      console.log(event.query.sql);
+      console.log(event.query.parameters);
+    }
+  },
 });

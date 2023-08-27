@@ -6,7 +6,7 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn("id", "serial", (col) => col.primaryKey())
     .addColumn("url", "text", (col) => col.notNull())
     .addColumn("submission_id", "uuid", (col) =>
-      col.references("submissions.id").onDelete("cascade"),
+      col.references("submissions.id").onDelete("cascade").notNull(),
     )
     .addColumn("created_at", "timestamp", (col) =>
       col.defaultTo(sql`now()`).notNull(),

@@ -63,5 +63,11 @@
       "nav_settings": "Settings",
       "nav_members": "Members"
     }
+  },
+  "customer": {
+    "submission": {
+      "textbox_placeholder": "Type your message here",
+      "cta": "Submit"
+    }
   }
 }

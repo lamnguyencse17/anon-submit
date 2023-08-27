@@ -3,7 +3,9 @@ import { Kysely, sql } from "kysely";
 export const up = async (db: Kysely<any>) => {
   await db.schema
     .createTable("submissions")
-    .addColumn("id", "uuid", (col) => col.primaryKey())
+    .addColumn("id", "uuid", (col) =>
+      col.primaryKey().defaultTo(sql`gen_random_uuid()`),
+    )
     .addColumn("content", "text", (col) => col.notNull())
     .addColumn("organization_id", "integer", (col) =>
       col.references("organizations.id").notNull().onDelete("cascade"),

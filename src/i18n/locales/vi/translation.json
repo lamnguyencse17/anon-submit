@@ -63,5 +63,11 @@
       "nav_settings": "Cài đặt",
       "nav_members": "Thành viên"
     }
+  },
+  "customer": {
+    "submission": {
+      "textbox_placeholder": "Nhập tin nhắn của bạn ở đây",
+      "cta": "Gửi đi"
+    }
   }
 }
